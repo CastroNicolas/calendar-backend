@@ -57,7 +57,7 @@ const loginUsuario = async(req, res = response) => {
         if (!usuario) {
             return res.status(400).json({
                 ok: false,
-                message: 'No existe ninguna cuneta con este email'
+                message: 'No existe ninguna cuenta con este email'
             })
         } 
 
@@ -65,7 +65,7 @@ const loginUsuario = async(req, res = response) => {
 
         const validarPassword = bcrypt.compareSync(password, usuario.password)
 
-        if (!password) {
+        if (!validarPassword) {
             res.status(400).json({
                 ok:false,
                 message: 'Password incorrecto',
